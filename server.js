@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // MongoDB Connection
-const mongoURI = "mongodb://localhost:27017/tailored";
+const mongoURI = process.env.MONGODB_URI;
 mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB connected"))
